@@ -8,7 +8,6 @@ def get_fish(pool, days):
             if pool[index] == '-1':
                 pool[index] = '6'
                 pool.append('8')
-        # print(pool)
     return pool
 
 with open("day6_input") as f:
@@ -17,11 +16,9 @@ with open("day6_input") as f:
     middle_pool = []
     for each_fish in original_pool:
         middle_pool.extend(get_fish([each_fish], 100))
-    # for each_fish in middle_pool:
-    #     new_pool.extend(get_fish([each_fish],100))
+
     c = Counter(middle_pool)
     new_pool = list(c.keys())
-    final_pool = []
     final_length = 0
     for each_fish in new_pool:
         final_length += len(get_fish([each_fish], 156))*c.get(each_fish)
